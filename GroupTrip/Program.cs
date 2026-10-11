@@ -1,4 +1,14 @@
-﻿using System.ComponentModel;
+﻿/*
+* Name:            Tyler Himes
+* Course:          CSCI 1250, Section 001
+* Assignment:      Lab 04, The Group Trip
+* Date:            October 7, 2026
+* Description:     Rebuilds the trip calculator with methods and arrays so it 
+*                  reports on a whole group instead of one person.
+*/
+
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 
@@ -41,6 +51,22 @@ System.Console.WriteLine($"Fuel cost: {fuelCost.ToString("C")}\n");
 System.Console.WriteLine($"Pizza cost: {totalPizzaCost.ToString("C")}\n");
 System.Console.WriteLine($"Trip total: {totalCost.ToString("C")}\n");
 
+//INPUT PT 2
+string[] names = {"Ada", "Grace", "Alan", "Katherine"};
+double[] hoursWorked = { 22, 15, 30, 18};
+double [] hourlyRates = {13.50, 16.00, 11.20, 14.80};
+
+//PT 2 CALCULATIONS
+
+int peopleGoing = names.Length;
+double slicesEach = pizzaCount * pizzaSlices / peopleGoing;
+double costPerPerson = totalCost / peopleGoing;
+
+System.Console.WriteLine("=== Part 2: The Group ===");
+System.Console.WriteLine($"People going: {peopleGoing.ToString()}");
+System.Console.WriteLine($"Slices each: {slicesEach.ToString("F1")}");
+System.Console.WriteLine($"Cost per person: {costPerPerson.ToString("C")}");
+
 
 static double FuelCost(double miles, double milesPerGallon, double pricePerGallon)
 {
@@ -55,5 +81,5 @@ static double TakeHomePay(double hours, double hourlyRate, double taxRate)
 }
 static double HoursToCover(double amountOwed, double takeHomePayPerHour)
 {
-    return amountOwed;
+    return amountOwed/takeHomePayPerHour;
 }
